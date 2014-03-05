@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SBT_BOOT_DIR=${HOME}/.sbt/boot/
-SBT_TARGETS="clean test sonatypeRelease"
+SBT_TARGETS="clean test publishSigned sonatypeRelease"
 SBT_STANDARD_OPTS="-Dsbt.log.noformat=true -Xmx1024M -XX:+CMSClassUnloadingEnabled -XX:+UseCompressedOops -XX:MaxPermSize=768m  -Dfile.encoding=UTF8"
 
 if [ -f "/etc/buildrc" ]; then
