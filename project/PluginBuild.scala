@@ -18,8 +18,8 @@ import Keys._
 
 object PluginBuild extends Build {
 
-  lazy val pluginName = "sbt-git-stamp"
-  lazy val pluginVersion = "4.0.0-SNAPSHOT"
+  val pluginName = "sbt-git-stamp"
+  val pluginVersion = "4.0.0-SNAPSHOT"
 
   lazy val root = Project(pluginName, base = file("."), settings = Project.defaultSettings ++ Seq(
     version := pluginVersion,
