@@ -47,5 +47,6 @@ Your artifacts will just come out with a `MANIFEST.MF` file that looks something
     Git-Build-Date: 2013-04-26T17:22:58.538-07:00
     Specification-Version: 0.1
     Git-Head-Rev: b0d5a67d59dc7c0133aecce2e2ceb18fc8d23597
+    Git-Describe: release/0.3.5-b0d5a67
 
 The entries starting with `Git-` were added by this plugin.

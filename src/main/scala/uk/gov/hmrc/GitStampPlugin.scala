@@ -38,7 +38,8 @@ object GitStampPlugin extends Plugin {
     List("Git-Branch" -> branch,
           "Git-Repo-Is-Clean" -> isClean.toString, 
           "Git-Head-Rev" -> ObjectId.toString(head.getObjectId),
-          "Git-Build-Date" ->  ISODateTimeFormat.dateTime.print(DateTime.now)
+          "Git-Build-Date" ->  ISODateTimeFormat.dateTime.print(DateTime.now),
+          "Git-Describe" -> git.describe().call()
     )
   }
 
