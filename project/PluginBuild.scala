@@ -19,14 +19,14 @@ import Keys._
 object PluginBuild extends Build {
 
   val pluginName = "sbt-git-stamp"
-  val pluginVersion = "4.0.0"
+  val pluginVersion = "4.1.0-SNAPSHOT"
 
   lazy val root = Project(pluginName, base = file("."), settings = Project.defaultSettings ++ Seq(
     version := pluginVersion,
     sbtPlugin := true,
     organization := "uk.gov.hmrc",
     name := pluginName,
-    scalaVersion := "2.10.3",
+    scalaVersion := "2.10.4",
     resolvers ++= Seq(
       Resolver.mavenLocal,
       "jgit-repository" at "https://repo.eclipse.org/content/groups/releases/",
@@ -34,9 +34,9 @@ object PluginBuild extends Build {
       Opts.resolver.sonatypeSnapshots
     ),
     libraryDependencies ++= Seq(
-      "com.github.nscala-time" %% "nscala-time" % "0.8.0",
-      "org.eclipse.jgit" % "org.eclipse.jgit" % "3.3.0.201403021825-r",
-      "org.scalatest" %% "scalatest" % "2.1.0" % "test"
+      "com.github.nscala-time" %% "nscala-time" % "1.2.0",
+      "org.eclipse.jgit" % "org.eclipse.jgit" % "3.3.2.201404171909-r",
+      "org.scalatest" %% "scalatest" % "2.2.0" % "test"
     ),
     publishArtifact := true,
     publishArtifact in Test := false
