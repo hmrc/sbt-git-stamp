@@ -29,17 +29,19 @@ object GitStampPlugin extends Plugin {
   def repoInfo: List[(String, String)] = {
     val builder = new FileRepositoryBuilder
     val repository = builder.readEnvironment.findGitDir.build
-    val head = repository.getRef(Constants.HEAD)
     val git = new Git(repository)
+    val head = repository.getRef(Constants.HEAD)
+    val headRev = ObjectId.toString(head.getObjectId)
     val status = git.status.call
     val isClean = status.isClean
     val branch = repository.getBranch
+    val describe = Option(git.describe().call()).getOrElse(headRev)
 
     List("Git-Branch" -> branch,
           "Git-Repo-Is-Clean" -> isClean.toString, 
-          "Git-Head-Rev" -> ObjectId.toString(head.getObjectId),
+          "Git-Head-Rev" -> headRev,
           "Git-Build-Date" ->  ISODateTimeFormat.dateTime.print(DateTime.now),
-          "Git-Describe" -> git.describe().call()
+          "Git-Describe" -> describe
     )
   }
 
