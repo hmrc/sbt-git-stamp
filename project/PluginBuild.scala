@@ -34,9 +34,9 @@ object PluginBuild extends Build {
       Opts.resolver.sonatypeSnapshots
     ),
     libraryDependencies ++= Seq(
-      "com.github.nscala-time" %% "nscala-time" % "1.2.0",
-      "org.eclipse.jgit" % "org.eclipse.jgit" % "3.3.2.201404171909-r",
-      "org.scalatest" %% "scalatest" % "2.2.0" % "test"
+      "com.github.nscala-time" %% "nscala-time" % "1.6.0",
+      "org.eclipse.jgit" % "org.eclipse.jgit" % "3.6.1.201501031845-r",
+      "org.scalatest" %% "scalatest" % "2.2.1" % "test"
     ),
     publishArtifact := true,
     publishArtifact in Test := false
