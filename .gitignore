@@ -2,6 +2,7 @@
 target
 logs
 pids
+.gitconfig
 
 */*dependency-reduced-pom.xml
 
