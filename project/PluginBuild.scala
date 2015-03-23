@@ -18,41 +18,41 @@ import Keys._
 
 object PluginBuild extends Build {
 
+  import de.heikoseeberger.sbtheader.AutomateHeaderPlugin
+
   val pluginName = "sbt-git-stamp"
   val pluginVersion = "4.6.0-SNAPSHOT"
 
   lazy val root = Project(pluginName, base = file("."), settings = Seq(
-    version := pluginVersion,
-    sbtPlugin := true,
-    organization := "uk.gov.hmrc",
-    name := pluginName,
-    scalaVersion := "2.10.4",
-    resolvers ++= Seq(
-      Resolver.mavenLocal,
-      "jgit-repository" at "https://repo.eclipse.org/content/groups/releases/",
-      Opts.resolver.sonatypeReleases,
-      Opts.resolver.sonatypeSnapshots
-    ),
-    libraryDependencies ++= Seq(
-      "com.github.nscala-time" %% "nscala-time" % "1.6.0",
-      "org.eclipse.jgit" % "org.eclipse.jgit" % "3.6.1.201501031845-r",
-      "org.scalatest" %% "scalatest" % "2.2.1" % "test"
-    ),
-    publishArtifact := true,
-    publishArtifact in Test := false
-  ) ++ SonatypeBuild()
-  )
+      version := pluginVersion,
+      sbtPlugin := true,
+      organization := "uk.gov.hmrc",
+      name := pluginName,
+      scalaVersion := "2.10.4",
+      resolvers ++= Seq(
+        Resolver.mavenLocal,
+        "jgit-repository" at "https://repo.eclipse.org/content/groups/releases/",
+        Opts.resolver.sonatypeReleases,
+        Opts.resolver.sonatypeSnapshots
+      ),
+      libraryDependencies ++= Seq(
+        "com.github.nscala-time" %% "nscala-time" % "1.8.0",
+        "org.eclipse.jgit" % "org.eclipse.jgit" % "3.6.1.201501031845-r",
+        "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+      ),
+      publishArtifact := true,
+      publishArtifact in Test := false,
+      BuildDescriptionSettings(),
+      HeaderSettings()
+    )
+  ).enablePlugins(AutomateHeaderPlugin)
 
 }
 
 
-object SonatypeBuild {
+object BuildDescriptionSettings {
 
-  import xerial.sbt.Sonatype._
-
-  def apply() = {
-    sonatypeSettings ++ Seq(
-      pomExtra := (<url>https://www.gov.uk/government/organisations/hm-revenue-customs</url>
+  def apply() = pomExtra := (<url>https://www.gov.uk/government/organisations/hm-revenue-customs</url>
         <licenses>
           <license>
             <name>Apache 2</name>
@@ -71,7 +71,13 @@ object SonatypeBuild {
             <url>http://www.equalexperts.com</url>
           </developer>
         </developers>)
-    )
-  }
+}
 
+
+object HeaderSettings {
+
+  import de.heikoseeberger.sbtheader.HeaderPlugin.autoImport._
+  import de.heikoseeberger.sbtheader.license.Apache2_0
+
+  def apply() = headers := Map("scala" -> Apache2_0("2015", "HM Revenue & Customs"))
 }
