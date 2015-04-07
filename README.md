@@ -54,3 +54,7 @@ Your artifacts will just come out with a `MANIFEST.MF` file that looks something
     Git-Describe: release/0.3.5-b0d5a67
 
 The entries starting with `Git-` were added by this plugin.
+
+## License ##
+ 
+This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
