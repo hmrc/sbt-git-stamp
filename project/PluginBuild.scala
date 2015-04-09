@@ -30,10 +30,7 @@ object PluginBuild extends Build {
       name := pluginName,
       scalaVersion := "2.10.4",
       resolvers ++= Seq(
-        Resolver.mavenLocal,
-        "jgit-repository" at "https://repo.eclipse.org/content/groups/releases/",
-        Opts.resolver.sonatypeReleases,
-        Opts.resolver.sonatypeSnapshots
+        "jgit-repository" at "https://repo.eclipse.org/content/groups/releases/"
       ),
       libraryDependencies ++= Seq(
         "com.github.nscala-time" %% "nscala-time" % "1.8.0",

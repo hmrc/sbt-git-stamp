@@ -1,1 +1,1 @@
-addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.3.0")
+addSbtPlugin("de.heikoseeberger" % "sbt-header" % "1.4.0")
