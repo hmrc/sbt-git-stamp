@@ -29,16 +29,15 @@ object PluginBuild extends Build {
       organization := "uk.gov.hmrc",
       name := pluginName,
       scalaVersion := "2.10.4",
-      resolvers ++= Seq(
-        "jgit-repository" at "https://repo.eclipse.org/content/groups/releases/"
-      ),
+      resolvers ++= Seq(Resolver.bintrayRepo("hmrc", "releases")),
       libraryDependencies ++= Seq(
-        "com.github.nscala-time" %% "nscala-time" % "1.8.0",
-        "org.eclipse.jgit" % "org.eclipse.jgit" % "3.6.1.201501031845-r",
-        "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+        "uk.gov.hmrc" %% "git-stamp" % "0.2.0",
+        "org.pegdown" % "pegdown" % "1.4.2" % "test"
       ),
       publishArtifact := true,
       publishArtifact in Test := false,
+      sources in doc in Compile := List(),
+      sources in doc in Test := List(),
       BuildDescriptionSettings(),
       HeaderSettings()
     )
