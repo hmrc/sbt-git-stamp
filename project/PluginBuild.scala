@@ -21,7 +21,7 @@ object PluginBuild extends Build {
   import de.heikoseeberger.sbtheader.AutomateHeaderPlugin
 
   val pluginName = "sbt-git-stamp"
-  val pluginVersion = "4.7.0-SNAPSHOT"
+  val pluginVersion = "4.7.0"
 
   lazy val root = Project(pluginName, base = file("."), settings = Seq(
       version := pluginVersion,
