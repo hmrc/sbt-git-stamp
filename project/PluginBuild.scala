@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import sbt.Keys._
 import sbt._
-import Keys._
+import uk.gov.hmrc.DefaultBuildSettings._
+import uk.gov.hmrc.versioning.SbtGitVersioning
+import uk.gov.hmrc.SbtAutoBuildPlugin
 
 object PluginBuild extends Build {
 
-  import de.heikoseeberger.sbtheader.AutomateHeaderPlugin
-
   val pluginName = "sbt-git-stamp"
-  val pluginVersion = "4.8.0-SNAPSHOT"
 
   lazy val root = Project(pluginName, base = file("."), settings = Seq(
-      version := pluginVersion,
+      targetJvm := "jvm-1.7",
       sbtPlugin := true,
       organization := "uk.gov.hmrc",
       name := pluginName,
@@ -38,10 +38,9 @@ object PluginBuild extends Build {
       publishArtifact in Test := false,
       sources in doc in Compile := List(),
       sources in doc in Test := List(),
-      BuildDescriptionSettings(),
-      HeaderSettings()
+      BuildDescriptionSettings()
     )
-  ).enablePlugins(AutomateHeaderPlugin)
+  ).enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
 
 }
 
@@ -67,13 +66,4 @@ object BuildDescriptionSettings {
             <url>http://www.equalexperts.com</url>
           </developer>
         </developers>)
-}
-
-
-object HeaderSettings {
-
-  import de.heikoseeberger.sbtheader.HeaderPlugin.autoImport._
-  import de.heikoseeberger.sbtheader.license.Apache2_0
-
-  def apply() = headers := Map("scala" -> Apache2_0("2015", "HM Revenue & Customs"))
 }
