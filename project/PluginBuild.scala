@@ -23,47 +23,18 @@ object PluginBuild extends Build {
 
   val pluginName = "sbt-git-stamp"
 
-  lazy val root = Project(pluginName, base = file("."), settings = Seq(
+  lazy val root = Project(pluginName, base = file("."))
+    .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
+    .settings(
       targetJvm := "jvm-1.7",
       sbtPlugin := true,
       organization := "uk.gov.hmrc",
-      name := pluginName,
       scalaVersion := "2.10.4",
-      resolvers ++= Seq(Resolver.bintrayRepo("hmrc", "releases")),
       libraryDependencies ++= Seq(
-        "uk.gov.hmrc" %% "git-stamp" % "0.2.0",
+        "com.github.nscala-time" %% "nscala-time" % "1.8.0",
+        "org.eclipse.jgit" % "org.eclipse.jgit" % "3.6.1.201501031845-r",
+        "org.scalatest" %% "scalatest" % "2.2.4" % "test",
         "org.pegdown" % "pegdown" % "1.4.2" % "test"
-      ),
-      publishArtifact := true,
-      publishArtifact in Test := false,
-      sources in doc in Compile := List(),
-      sources in doc in Test := List(),
-      BuildDescriptionSettings()
+      )
     )
-  ).enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
-
-}
-
-
-object BuildDescriptionSettings {
-
-  def apply() = pomExtra := (<url>https://www.gov.uk/government/organisations/hm-revenue-customs</url>
-        <licenses>
-          <license>
-            <name>Apache 2</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-          </license>
-        </licenses>
-        <scm>
-          <connection>scm:git@github.com:hmrc/sbt-git-stamp.git</connection>
-          <developerConnection>scm:git@github.com:hmrc/sbt-git-stamp.git</developerConnection>
-          <url>git@github.com:hmrc/sbt-git-stamp.git</url>
-        </scm>
-        <developers>
-          <developer>
-            <id>duncancrawford</id>
-            <name>Duncan Crawford</name>
-            <url>http://www.equalexperts.com</url>
-          </developer>
-        </developers>)
 }
