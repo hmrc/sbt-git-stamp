@@ -17,8 +17,6 @@
 package uk.gov.hmrc.gitstamp
 
 import org.scalatest.{Matchers, WordSpec}
-import GitStamp
-
 
 class GitStampSpec extends WordSpec with Matchers{
 
