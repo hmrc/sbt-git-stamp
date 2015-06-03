@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc
+package uk.gov.hmrc.gitstamp
 
 import com.github.nscala_time.time.Imports._
 import org.eclipse.jgit.api.Git
@@ -23,25 +23,13 @@ import org.eclipse.jgit.lib.{ObjectId, Repository}
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.joda.time.format.ISODateTimeFormat._
-import sbt.Package.ManifestAttributes
-import sbt.Keys._
-import sbt._
-
 import scala.collection.JavaConversions._
-
-object GitStampPlugin extends Plugin {
-
-  val gitStampSettings =
-    Seq(packageOptions <+= (packageOptions in Compile, packageOptions in packageBin) map { (a, b) =>
-      ManifestAttributes(GitStamp.gitStamp.toSeq: _*)
-    })
-}
 
 object GitStamp{
 
-  def gitStamp: java.util.Map[String, String] = gitStamp(new FileRepositoryBuilder().readEnvironment.findGitDir.build)
+  def gitStamp: Map[String, String] = gitStamp(new FileRepositoryBuilder().readEnvironment.findGitDir.build)
 
-  def gitStamp(repository: Repository): java.util.Map[String, String] = {
+  def gitStamp(repository: Repository): Map[String, String] = {
     val git = new Git(repository)
     val headId = repository.getRef(HEAD).getObjectId
     val headIdStr = ObjectId.toString(headId)

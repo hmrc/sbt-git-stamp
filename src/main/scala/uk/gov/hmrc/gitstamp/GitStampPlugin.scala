@@ -16,20 +16,16 @@
 
 package uk.gov.hmrc.gitstamp
 
-import org.scalatest.{Matchers, WordSpec}
-import GitStamp
+import sbt.Keys._
+import sbt.Package.ManifestAttributes
+import sbt._
 
+import scala.collection.JavaConversions._
 
-class GitStampSpec extends WordSpec with Matchers{
+object GitStampPlugin extends Plugin {
 
-  "Git repo information" in {
-    val info = GitStamp.gitStamp.toString
-    info.contains("Build-Date") shouldBe true
-    info.contains("Git-Branch") shouldBe true
-    info.contains("Git-Repo-Is-Clean") shouldBe true
-    info.contains("Git-Head-Rev") shouldBe true
-    info.contains("Git-Commit-Author") shouldBe true
-    info.contains("Git-Commit-Date") shouldBe true
-    info.contains("Git-Describe") shouldBe true
-  }
+  val gitStampSettings =
+    Seq(packageOptions <+= (packageOptions in Compile, packageOptions in packageBin) map { (a, b) =>
+      ManifestAttributes(GitStamp.gitStamp.toSeq: _*)
+    })
 }
