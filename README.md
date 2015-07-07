@@ -24,7 +24,12 @@ help you track down where a build came from.
 
 Add the following to your `project/plugins.sbt`:
 
-    addSbtPlugin("uk.gov.hmrc" % "sbt-git-stamp" % "<VERSION>")
+```scala
+resolvers += Resolver.url("hmrc-sbt-plugin-releases",
+  url("https://dl.bintray.com/hmrc/sbt-plugin-releases"))(Resolver.ivyStylePatterns)
+  
+addSbtPlugin("uk.gov.hmrc" % "sbt-git-stamp" % "INSERT_VERSION")
+```    
 
 Add the following near the top of your `build.sbt` file (if you are using a full build config, I'm sure you can figure
 it out):
