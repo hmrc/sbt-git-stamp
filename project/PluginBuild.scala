@@ -29,12 +29,12 @@ object PluginBuild extends Build {
       targetJvm := "jvm-1.7",
       sbtPlugin := true,
       organization := "uk.gov.hmrc",
-      scalaVersion := "2.10.4",
+      scalaVersion := "2.10.5",
       libraryDependencies ++= Seq(
-        "com.github.nscala-time" %% "nscala-time" % "1.8.0",
+        "com.github.nscala-time" %% "nscala-time" % "2.2.0",
         "org.eclipse.jgit" % "org.eclipse.jgit" % "3.6.1.201501031845-r",
         "org.scalatest" %% "scalatest" % "2.2.4" % "test",
-        "org.pegdown" % "pegdown" % "1.4.2" % "test"
+        "org.pegdown" % "pegdown" % "1.5.0" % "test"
       )
     )
 }
