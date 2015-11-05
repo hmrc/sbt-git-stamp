@@ -34,7 +34,7 @@ addSbtPlugin("uk.gov.hmrc" % "sbt-git-stamp" % "INSERT_VERSION")
 Add the following near the top of your `build.sbt` file (if you are using a full build config, I'm sure you can figure
 it out):
 
-    import uk.gov.hmrc.GitStampPlugin._
+    import uk.gov.hmrc.gitstamp.GitStampPlugin._
 
 Then, add this lower down:
 
