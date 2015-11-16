@@ -26,7 +26,6 @@ object PluginBuild extends Build {
   lazy val root = Project(pluginName, base = file("."))
     .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
     .settings(
-      targetJvm := "jvm-1.7",
       sbtPlugin := true,
       organization := "uk.gov.hmrc",
       scalaVersion := "2.10.5",
