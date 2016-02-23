@@ -9,7 +9,7 @@ We cannot take the credit for the idea of this plugin as the source is a fork fr
 
 ## What it does ##
 
-This plugin will include some basic information about the state of the repository that the artifact was built from,
+A plugin including some basic information about the state of the repository that the artifact was built from,
 at the time it was built.  This information includes:
 
 * Head revision
