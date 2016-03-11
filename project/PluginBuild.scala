@@ -27,6 +27,7 @@ object PluginBuild extends Build {
     .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
     .settings(
       sbtPlugin := true,
+      targetJvm := "jvm-1.7",
       organization := "uk.gov.hmrc",
       scalaVersion := "2.10.5",
       libraryDependencies ++= Seq(
