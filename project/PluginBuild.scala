@@ -29,11 +29,14 @@ object PluginBuild extends Build {
       sbtPlugin := true,
       targetJvm := "jvm-1.7",
       organization := "uk.gov.hmrc",
-      scalaVersion := "2.10.5",
+      crossSbtVersions := Vector("0.13.16", "1.1.0"),
+      scalaVersion in ThisBuild := {
+        if((sbtBinaryVersion in pluginCrossBuild).value.startsWith("0.")) "2.10.7" else "2.12.4"
+      },
       libraryDependencies ++= Seq(
-        "com.github.nscala-time" %% "nscala-time" % "2.2.0",
+        "com.github.nscala-time" %% "nscala-time" % "2.18.0",
         "org.eclipse.jgit" % "org.eclipse.jgit" % "3.6.1.201501031845-r",
-        "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+        "org.scalatest" %% "scalatest" % "3.0.1" % "test",
         "org.pegdown" % "pegdown" % "1.5.0" % "test"
       )
     )

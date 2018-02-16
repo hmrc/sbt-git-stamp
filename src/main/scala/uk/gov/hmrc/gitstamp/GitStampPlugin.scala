@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 HM Revenue & Customs
+ * Copyright 2018 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,8 @@ import sbt.Keys._
 import sbt.Package.ManifestAttributes
 import sbt._
 
-import scala.collection.JavaConversions._
-
-object GitStampPlugin extends Plugin {
-
-  val gitStampSettings =
-    Seq(packageOptions <+= (packageOptions in Compile, packageOptions in packageBin) map { (a, b) =>
-      ManifestAttributes(GitStamp.gitStamp.toSeq: _*)
-    })
+object GitStampPlugin extends AutoPlugin {
+  override lazy val projectSettings = Seq(
+    packageOptions in(Compile, packageBin) += ManifestAttributes(GitStamp.gitStamp.toSeq: _*)
+  )
 }
