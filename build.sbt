@@ -15,7 +15,7 @@ lazy val root = Project(pluginName, base = file("."))
     libraryDependencies              ++=
       Seq(
         "com.github.nscala-time"    %% "nscala-time"        % "2.22.0",
-        "org.eclipse.jgit"          % "org.eclipse.jgit"    % "3.6.2.201501210735-r",
+        "org.eclipse.jgit"          % "org.eclipse.jgit"    % "4.11.9.201909030838-r",
         "org.scalatest"             %% "scalatest"          % "3.1.0-M2"  % Test,
         "com.vladsch.flexmark"      % "flexmark-all"        % "0.35.10"   % Test
       )

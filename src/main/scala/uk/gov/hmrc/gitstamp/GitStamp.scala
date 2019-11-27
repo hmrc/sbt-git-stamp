@@ -31,7 +31,7 @@ object GitStamp{
 
   def gitStamp(repository: Repository): Map[String, String] = {
     val git = new Git(repository)
-    val headId = repository.getRef(HEAD).getObjectId
+    val headId = repository.exactRef(HEAD).getObjectId
     val headIdStr = ObjectId.toString(headId)
     val describe = Option(git.describe().call()).getOrElse(headIdStr)
     val headRev = headCommit(git, headId)
