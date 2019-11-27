@@ -20,9 +20,7 @@ import sbt.Keys._
 import sbt.Package.ManifestAttributes
 import sbt._
 
-import scala.collection.JavaConversions._
-
-object GitStampPlugin extends Plugin {
+object GitStampPlugin extends AutoPlugin {
 
   val gitStampSettings: Seq[Def.Setting[Task[scala.Seq[PackageOption]]]] =
     Seq(packageOptions += ManifestAttributes(GitStamp.gitStamp.toSeq: _*))

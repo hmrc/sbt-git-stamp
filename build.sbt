@@ -8,9 +8,10 @@ lazy val root = Project(pluginName, base = file("."))
     sbtPlugin                        := true,
     majorVersion                     := 5,
     makePublicallyAvailableOnBintray := true,
-    targetJvm                        := "jvm-1.7",
+    targetJvm                        := "jvm-1.8",
     organization                     := "uk.gov.hmrc",
     scalaVersion                     := "2.10.7",
+    crossSbtVersions                 := Vector("0.13.18", "1.3.4"),
     libraryDependencies              ++=
       Seq(
         "com.github.nscala-time"    %% "nscala-time"        % "2.22.0",
