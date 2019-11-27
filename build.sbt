@@ -10,12 +10,12 @@ lazy val root = Project(pluginName, base = file("."))
     makePublicallyAvailableOnBintray := true,
     targetJvm                        := "jvm-1.7",
     organization                     := "uk.gov.hmrc",
-    scalaVersion                     := "2.10.5",
+    scalaVersion                     := "2.10.7",
     libraryDependencies              ++=
       Seq(
-        "com.github.nscala-time" %% "nscala-time"     % "2.2.0",
-        "org.eclipse.jgit"       % "org.eclipse.jgit" % "3.6.1.201501031845-r",
-        "org.scalatest"          %% "scalatest"       % "2.2.4"                 % Test,
-        "org.pegdown"            % "pegdown"          % "1.5.0"                 % Test
+        "com.github.nscala-time"    %% "nscala-time"        % "2.22.0",
+        "org.eclipse.jgit"          % "org.eclipse.jgit"    % "3.6.2.201501210735-r",
+        "org.scalatest"             %% "scalatest"          % "3.1.0-M2"  % Test,
+        "com.vladsch.flexmark"      % "flexmark-all"        % "0.35.10"   % Test
       )
   )
