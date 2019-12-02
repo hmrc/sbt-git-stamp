@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 HM Revenue & Customs
+ * Copyright 2019 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import org.eclipse.jgit.lib.{ObjectId, Repository}
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.joda.time.format.ISODateTimeFormat._
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 object GitStamp{
 
@@ -31,7 +31,7 @@ object GitStamp{
 
   def gitStamp(repository: Repository): Map[String, String] = {
     val git = new Git(repository)
-    val headId = repository.getRef(HEAD).getObjectId
+    val headId = repository.exactRef(HEAD).getObjectId
     val headIdStr = ObjectId.toString(headId)
     val describe = Option(git.describe().call()).getOrElse(headIdStr)
     val headRev = headCommit(git, headId)
@@ -58,8 +58,7 @@ object GitStamp{
   }
 
   private def headCommit(git: Git, headId: ObjectId): Option[RevCommit] = {
-    git.log().add(headId).setMaxCount(1).call().toSeq.headOption
+    git.log().add(headId).setMaxCount(1).call().asScala.toSeq.headOption
   }
 
-  private def committerName: (RevCommit) => String = _.getCommitterIdent.getName
 }
