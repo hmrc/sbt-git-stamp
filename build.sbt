@@ -6,7 +6,7 @@ lazy val root = Project(pluginName, base = file("."))
   .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning, SbtArtifactory)
   .settings(
     sbtPlugin                        := true,
-    majorVersion                     := 5,
+    majorVersion                     := 6,
     makePublicallyAvailableOnBintray := true,
     targetJvm                        := "jvm-1.8",
     organization                     := "uk.gov.hmrc",
