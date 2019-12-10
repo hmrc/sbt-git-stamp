@@ -28,7 +28,7 @@ Since major version 6, this plugin is cross compiled for sbt 1.x (specifically 1
 
 | Sbt version | Plugin version |
 | ----------- | -------------- |
-| `= 0.13.x`  | `any`          |
+| `0.13.x`  | `any`          |
 | `>= 1.x`    | `>= 6.x`       |
 
 Add the following to your `project/plugins.sbt`:
