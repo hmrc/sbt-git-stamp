@@ -9,7 +9,7 @@ lazy val root = Project(pluginName, base = file("."))
     majorVersion                     := 6,
     makePublicallyAvailableOnBintray := true,
     organization                     := "uk.gov.hmrc",
-    scalaVersion                     := "2.10.7",   //Pinned to 2.10 while on sbt 0.13 to match ^ cross build inferred version
+    scalaVersion                     := "2.12.10",
     crossSbtVersions                 := Vector("0.13.18", "1.3.4"),
     libraryDependencies              ++=
       Seq(
