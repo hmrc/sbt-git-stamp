@@ -1,7 +1,7 @@
 sbt-git-stamp
 =============
 
-[![Build Status](https://travis-ci.org/hmrc/sbt-git-stamp.svg)](https://travis-ci.org/hmrc/sbt-git-stamp) [ ![Download](https://api.bintray.com/packages/hmrc/sbt-plugin-releases/sbt-git-stamp/images/download.svg) ](https://bintray.com/hmrc/sbt-plugin-releases/sbt-git-stamp/_latestVersion)
+
 
 An SBT plugin that add some basic git data to the artefact's `MANIFEST.MF` file.
 
