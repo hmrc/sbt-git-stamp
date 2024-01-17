@@ -19,16 +19,16 @@ package uk.gov.hmrc.gitstamp
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-class GitStampSpec extends AnyWordSpec with Matchers{
+class GitStampSpec extends AnyWordSpec with Matchers {
 
   "Git repo information" in {
-    val info = GitStamp.gitStamp.toString
-    info.contains("Build-Date") shouldBe true
-    info.contains("Git-Branch") shouldBe true
-    info.contains("Git-Repo-Is-Clean") shouldBe true
-    info.contains("Git-Head-Rev") shouldBe true
-    info.contains("Git-Commit-Author") shouldBe true
-    info.contains("Git-Commit-Date") shouldBe true
-    info.contains("Git-Describe") shouldBe true
+    val info = GitStamp.gitStamp
+    info should contain key "Build-Date"
+    info should contain key "Git-Branch"
+    info should contain key "Git-Repo-Is-Clean"
+    info should contain key "Git-Head-Rev"
+    info should contain key "Git-Commit-Author"
+    info should contain key "Git-Commit-Date"
+    info should contain key "Git-Describe"
   }
 }

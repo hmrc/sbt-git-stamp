@@ -37,3 +37,5 @@ lib_managed/*
 
 **/codekit-config.json
 nohup.out
+.metals/
+.vscode/
