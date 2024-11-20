@@ -16,16 +16,20 @@
 
 package uk.gov.hmrc.gitstamp
 
-import com.github.nscala_time.time.Imports._
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.lib.Constants._
 import org.eclipse.jgit.lib.{ObjectId, Repository}
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
-import org.joda.time.format.ISODateTimeFormat._
+
+import java.time.{Instant, ZoneId}
+import java.time.format.DateTimeFormatter
 import scala.jdk.CollectionConverters._
 
-object GitStamp{
+object GitStamp {
+
+  private val formatter =
+    DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ").withZone(ZoneId.systemDefault)
 
   def gitStamp: Map[String, String] =
     gitStamp(new FileRepositoryBuilder().readEnvironment.findGitDir.build)
@@ -38,7 +42,7 @@ object GitStamp{
     val headRev   = headCommit(git, headId)
 
     Map(
-      "Build-Date"        -> dateTime.print(DateTime.now),
+      "Build-Date"        -> formatter.format(Instant.now()),
       "Git-Branch"        -> repository.getBranch,
       "Git-Repo-Is-Clean" -> repoIsClean(git),
       "Git-Head-Rev"      -> headIdStr,
@@ -52,7 +56,7 @@ object GitStamp{
     git.status.call.isClean.toString
 
   private def commitDateTime(headRev: Option[RevCommit]): String =
-    dateTime.print(headRev.map(_.getCommitTime.toLong * 1000).getOrElse(0L))
+    formatter.format(Instant.ofEpochSecond(headRev.fold(0L)(_.getCommitTime.toLong)))
 
   private def commitAuthorName(headRev: Option[RevCommit]): String =
     headRev.map(_.getCommitterIdent.getName).getOrElse("")
